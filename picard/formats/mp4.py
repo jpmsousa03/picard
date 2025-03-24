@@ -278,6 +278,19 @@ class MP4File(File):
                 name = self.__casemap.get(name, name)
                 tags['----:com.apple.iTunes:' + name] = values
             elif name in self.__r_text_tags:
+            if name in self.__r_freeform_tags_ci:
+                values = [v.encode('utf-8') for v in values]
+                delall_ci(tags, self.__r_freeform_tags_ci[name])
+                if name in self.__casemap:
+                    name = self.__casemap[name]
+                else:
+                    name = self.__r_freeform_tags_ci[name]
+                tags[name] = values
+            elif name in self.__casemap:
+                values = [v.encode('utf-8') for v in values]
+                name = self.__casemap.get(name, name)
+                tags['----:com.apple.iTunes:' + name] = values
+            elif name in self.__r_text_tags:
                 tags[self.__r_text_tags[name]] = values
             elif name in self.__r_bool_tags:
                 tags[self.__r_bool_tags[name]] = (values[0] == '1')
