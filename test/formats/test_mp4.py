@@ -20,9 +20,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-
 import unittest
-
 import mutagen
 
 from picard.formats import ext_to_format
@@ -81,7 +79,7 @@ class CommonMP4Tests:
         def test_ci_tags_preserve_case(self):
             # Ensure values are not duplicated on repeated save and are saved
             # case preserving.
-            for name in ('Replaygain_Album_Peak', "Artist" ,'Custom', 'äöüéß\0'):
+            for name in ('Replaygain_Album_Peak', "Artist", 'Custom', 'äöüéß\0'):
                 tags = mutagen.mp4.MP4Tags()
                 tags['----:com.apple.iTunes:' + name] = [b'foo']
                 save_raw(self.filename, tags)

@@ -289,7 +289,6 @@ class MP4File(File):
             elif name in self.__r_freeform_tags:
                 values = [v.encode('utf-8') for v in values]
                 tags[self.__r_freeform_tags[name]] = values
-            
             elif name == 'musicip_fingerprint':
                 tags['----:com.apple.iTunes:fingerprint'] = [b'MusicMagic Fingerprint%s' % v.encode('ascii') for v in values]
             elif self.supports_tag(name) and name not in self.__other_supported_tags:
