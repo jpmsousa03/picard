@@ -27,7 +27,7 @@ from picard.tags.tagvar import (
     TagVars,
 )
 
-from mock import patch
+from unittest.mock import patch
 
 from picard.ui.find import FindBox
 from picard.ui.itemviews import MainPanel
